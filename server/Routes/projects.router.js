@@ -4,7 +4,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    const queryText = `SELECT * FROM projects ORDER BY id DESC;`;
+    const queryText = `SELECT *, projects.id as id, projects.name as name, tags.name as tag_name FROM projects 
+                        JOIN tags ON projects.tag_id = tags.id  
+                        ORDER BY projects.id DESC;`;
     pool.query(queryText).then((result) => {
         res.send(result.rows);
     }).catch((error) => {

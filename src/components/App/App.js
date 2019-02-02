@@ -10,6 +10,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'GET_PROJECTS' });
+    this.props.dispatch({type: 'GET_TAGS'});
   }
 
   

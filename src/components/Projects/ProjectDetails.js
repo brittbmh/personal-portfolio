@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class ProjectDetails extends Component {
+    
 
     render() {
         return (
@@ -12,7 +13,7 @@ class ProjectDetails extends Component {
                     <p>{this.props.project.description}</p>
                     <a href={this.props.project.github}>GitHub</a>
                     <a href={this.props.project.website}>Website</a>
-                    <p>{this.props.project.tag}</p>
+                    <p>{this.props.project.tag_name}</p>
                 </div>
             </div>
         )

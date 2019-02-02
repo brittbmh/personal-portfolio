@@ -15,6 +15,19 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery("GET_PROJECTS", fetchProjects);
+    yield takeEvery("GET_TAGS", fetchTags);
+}
+
+function* fetchTags() {
+    try {
+        const tags = yield axios.get('api/tags');
+        console.log(tags.data);
+        
+        yield put({ type: 'SET_TAGS', payload: tags.data });
+    } catch (error) {
+        yield console.log('error in fetchTags', error);
+        alert('something went wrong');
+    }
 }
 
 function* fetchProjects() {
