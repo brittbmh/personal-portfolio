@@ -9,12 +9,22 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
+import { takeEvery, put } from 'redux-saga/effects';
 
 // Create the rootSaga generator function
 function* rootSaga() {
-
+    yield takeEvery("GET_PROJECTS", fetchProjects);
 }
 
+function* fetchProjects() {
+    try {
+        const projects = yield axios.get('api/projects');
+        yield put({type: 'SET_PROJECTS', payload: projects});
+    } catch (error) {
+        yield console.log('error in fetchProjects', error);
+        alert('something went wrong');
+    }
+}
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
