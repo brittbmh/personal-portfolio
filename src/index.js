@@ -10,6 +10,7 @@ import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
+import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
@@ -19,7 +20,7 @@ function* rootSaga() {
 function* fetchProjects() {
     try {
         const projects = yield axios.get('api/projects');
-        yield put({type: 'SET_PROJECTS', payload: projects});
+        yield put({type: 'SET_PROJECTS', payload: projects.data});
     } catch (error) {
         yield console.log('error in fetchProjects', error);
         alert('something went wrong');

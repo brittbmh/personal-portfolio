@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Projects from '.././Projects/Projects.js';
 import Admin from '.././Admin/Admin.js';
 import Header from './Header.js';
-import {HashRouter as Router, Route, Link } from 'react-router-dom';
+import {HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
