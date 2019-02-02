@@ -3,11 +3,15 @@
 }
 
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.headerDiv {
+  background-color: rgb(247, 183, 183);
+  height: 75px;
   padding: 20px;
   color: white;
+}
+.headerDiv img {
+  float: left;
+  height: 50px;
 }
 
 .App-title {

@@ -4,9 +4,15 @@ import Admin from '.././Admin/Admin.js';
 import Header from './Header.js';
 import {HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
+import { connect } from 'react-redux';
 
 class App extends Component {
-  // Renders the entire app on the DOM
+
+  componentDidMount() {
+    this.props.dispatch({ type: 'GET_PROJECTS' });
+  }
+
+  
   render() {
     return (
       <div className="App">
@@ -22,4 +28,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);

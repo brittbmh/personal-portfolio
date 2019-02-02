@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class Header extends Component {
     render() {
         return (
-            <div>
-                
+            <div className="headerDiv">
+                <img src="/images/bc_pic.jpg" alt="logo"/>
             </div>
         )
     }
