@@ -9,7 +9,7 @@ class Projects extends Component {
     render() {
         return (
             <div>
-                <h1>Britt Carter's Projects</h1>
+                <h1>Britt Carter</h1>
                 <ProjectList />
             </div>
         )
