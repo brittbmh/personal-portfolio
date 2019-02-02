@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import ProjectList from './ProjectList.js';
 import { connect } from 'react-redux';
+
 
 class Projects extends Component {
     
@@ -7,7 +9,7 @@ class Projects extends Component {
         return (
             <div>
                 <h1>Britt Carter's Projects</h1>
-                {JSON.stringify(this.props.projects)}
+                <ProjectList />
             </div>
         )
     }
