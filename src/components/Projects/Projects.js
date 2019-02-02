@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProjectList from './ProjectList.js';
+import './projects.css';
 import { connect } from 'react-redux';
 
 
