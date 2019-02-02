@@ -21,7 +21,7 @@ class ProjectDetails extends Component {
                         <a href={this.props.project.github}>GitHub</a>
                         {this.props.project.website &&
                             <a href={this.props.project.website}>Website</a>}
-                        <p>primary technology used: {this.props.project.tag_name}</p>
+                        <p>tag: {this.props.project.tag_name}</p>
                     </span>
                 </div>
             </div>
