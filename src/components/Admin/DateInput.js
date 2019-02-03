@@ -11,11 +11,7 @@ class DateInput extends Component {
         }
     }
 
-    
-    
-
     handleChange = (date) => {
-        
         this.setState({
             stateDate: date
         })
@@ -23,8 +19,6 @@ class DateInput extends Component {
     }
 
     render() {
-        
-        
         return (
             <div>
                 <DatePicker

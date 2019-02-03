@@ -7,51 +7,59 @@ class AdminForm extends Component {
     constructor() {
         super();
         this.state = {
+            name: '',
+            desc: '',
+            website: '',
+            github: '',
             tag_id: '',
             stateDate: new Date()
         }
     }
 
+    // function to accept tag from Dropdown component and set state
     handleSetTag = (tag) => {
         this.setState({
             tag_id: tag
         })
     }
 
+    // function to accept date from DateInput component and set state
     handleDateChange = (date) => {
-        console.log('its happening');
-
         this.setState({
             stateDate: date
         })
     }
 
-    sendProject = () => {
-        this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state })
-    }
-
+    // function to add input fields to state
     addInput = (property) => {
         return e => {
             this.setState({
-            [property]: e.target.value
-        })}
+                [property]: e.target.value
+            })
+        }
     }
 
+    // function to send state (info from form) to index.js saga
+    sendProject = () => {
+        this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state })
+        alert('project added')
+    }
+
+    // form to accept info for new project to add to database
     render() {
         return (
             <div>
                 <br />
-                <form onSubmit={this.sendProject}>
-                    <input placeholder="Project Name" onChange={this.addInput('name')} />
+                <form id="projectForm" onSubmit={this.sendProject}>
+                    <input placeholder="Project Name" required onChange={this.addInput('name')} />
                     <input placeholder="Website URL (optional)" onChange={this.addInput('website')} />
-                    <input placeholder="GitHub URL" onChange={this.addInput('github')} />
-                    <input placeholder="Description" onChange={this.addInput('desc')} />
+                    <input placeholder="GitHub URL" required onChange={this.addInput('github')} />
+                    <input placeholder="Description" required onChange={this.addInput('desc')} />
                     <DateInput setDate={this.handleDateChange} />
-                    <Dropdown setTag={this.handleSetTag} />
+                    <Dropdown required setTag={this.handleSetTag} />
                     <button type="submit">Submit</button>
                 </form>
                 <br />
-                {JSON.stringify(this.state)}
             </div>
         )
     }
