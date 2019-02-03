@@ -20,30 +20,38 @@ class AdminForm extends Component {
 
     handleDateChange = (date) => {
         console.log('its happening');
-        
+
         this.setState({
             stateDate: date
         })
     }
 
     sendProject = () => {
-        this.props.dispatch({type: 'ADD_PROJECT', payload: this.state})
+        this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state })
     }
-    
+
+    addInput = (property) => {
+        return e => {
+            this.setState({
+            [property]: e.target.value
+        })}
+    }
+
     render() {
         return (
             <div>
                 <br />
                 <form onSubmit={this.sendProject}>
-                    <input placeholder="Project Name" onChange={this.addName}/>
-                    <input placeholder="Website URL (optional)"/>
-                    <input placeholder="GitHub URL" />
-                    <input placeholder="Description" />
-                    <DateInput setDate={this.handleDateChange}/>
-                    <Dropdown setTag={this.handleSetTag}/>
+                    <input placeholder="Project Name" onChange={this.addInput('name')} />
+                    <input placeholder="Website URL (optional)" onChange={this.addInput('website')} />
+                    <input placeholder="GitHub URL" onChange={this.addInput('github')} />
+                    <input placeholder="Description" onChange={this.addInput('desc')} />
+                    <DateInput setDate={this.handleDateChange} />
+                    <Dropdown setTag={this.handleSetTag} />
                     <button type="submit">Submit</button>
                 </form>
                 <br />
+                {JSON.stringify(this.state)}
             </div>
         )
     }

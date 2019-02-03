@@ -16,6 +16,11 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery("GET_PROJECTS", fetchProjects);
     yield takeEvery("GET_TAGS", fetchTags);
+    yield takeEvery("ADD_PROJECT", sendProject)
+}
+
+function* sendProject() {
+    
 }
 
 function* fetchTags() {
