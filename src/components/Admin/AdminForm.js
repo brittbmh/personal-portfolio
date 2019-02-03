@@ -4,6 +4,9 @@ import DateInput from './DateInput.js';
 import { connect } from 'react-redux';
 
 class AdminForm extends Component {
+    // create form to add new project to database
+
+    //state to hold input for new project 
     constructor() {
         super();
         this.state = {

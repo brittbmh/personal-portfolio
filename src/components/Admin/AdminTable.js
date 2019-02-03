@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class AdminTable extends Component {
+    // map to projects array to create table to display projects list on admin page
     tableDetails = () => {
         return (
             this.props.projects.map((project, i) => {
@@ -12,6 +13,7 @@ class AdminTable extends Component {
             })
         )
     }
+    
     render() {
         return (
             <div>

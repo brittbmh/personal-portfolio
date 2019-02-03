@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 
 class Projects extends Component {
+    //base component for main project page
     
     render() {
         return (

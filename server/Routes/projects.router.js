@@ -3,11 +3,13 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
+//get projects from database - join to get tag names from tags table
 router.get('/', (req, res) => {
     const queryText = `SELECT *, projects.id as id, projects.name as name, tags.name as tag_name FROM projects 
                         JOIN tags ON projects.tag_id = tags.id  
                         ORDER BY projects.id DESC;`;
     pool.query(queryText).then((result) => {
+        //send results to redux store
         res.send(result.rows);
     }).catch((error) => {
         console.log('error in GET /projects', error);
@@ -15,6 +17,7 @@ router.get('/', (req, res) => {
     })
 });
 
+//post new projects to database projects table
 router.post('/', (req, res) => {
     const project = req.body;
     const queryText = `INSERT INTO projects (name, description, website, github, date_completed, tag_id)

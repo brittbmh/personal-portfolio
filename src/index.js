@@ -12,7 +12,7 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
-// Create the rootSaga generator function
+// rootSaga generator to send request to saga using action type
 function* rootSaga() {
     yield takeEvery("GET_PROJECTS", fetchProjects);
     yield takeEvery("GET_TAGS", fetchTags);
@@ -20,8 +20,10 @@ function* rootSaga() {
 }
 
 function* sendProject(action) {
+    //function to send axios request to database to post new projects
     try {
         yield axios.post('api/projects', action.payload);
+        // next, trigger new fetchProjects to refresh project list
         yield put({type: 'GET_PROJECTS'})
     } catch(error) {
         yield console.log('error in sendProject', error);
@@ -30,10 +32,11 @@ function* sendProject(action) {
 }
 
 function* fetchTags() {
+    //funtion to get tags from database
     try {
         const tags = yield axios.get('api/tags');
         console.log(tags.data);
-        
+        //next, store tags in redux store to use throughout website
         yield put({ type: 'SET_TAGS', payload: tags.data });
     } catch (error) {
         yield console.log('error in fetchTags', error);
@@ -42,8 +45,10 @@ function* fetchTags() {
 }
 
 function* fetchProjects() {
+    //funtion to get projects from database
     try {
         const projects = yield axios.get('api/projects');
+        //next, store projects in redux store to use throughout website
         yield put({type: 'SET_PROJECTS', payload: projects.data});
     } catch (error) {
         yield console.log('error in fetchProjects', error);

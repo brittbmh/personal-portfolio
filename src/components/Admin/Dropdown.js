@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 
 
 class Dropdown extends Component {
-    
+    //component to add dropdown to select tags to new project form on admin page
 
+    // function to send selected tag to AdminForm component
     handleChange = event => {
         this.props.setTag(event.target.value);
     };
 
+    // function to pull tags from redux store to display in dropdown
     buildSelectInput = () => {
         const options = this.props.tags.map((tag, index) => {
             return (<option key={index}
@@ -20,11 +22,7 @@ class Dropdown extends Component {
         return options;
     }
 
-    
-
     render() {
-
-
         return (
             <div>
                     <select defaultValue='' required onChange={this.handleChange}>

@@ -6,9 +6,7 @@ import './admin.css';
 
 
 class Admin extends Component {
-    componentDidMount() {
-
-    }
+    //header and starting point for admin page
     render() {
         return (
             <div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class Header extends Component {
+    //base header to display on both pages
     render() {
         return (
             <div className="headerDiv">

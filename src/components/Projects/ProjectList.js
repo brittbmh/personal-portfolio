@@ -3,7 +3,9 @@ import ProjectDetails from './ProjectDetails.js';
 import { connect } from 'react-redux';
 
 class ProjectList extends Component {
+// component to pull project list for display on main page
 
+    // function to map through project array and send to ProjectDetails
     mapProjects = () => {
         return (
             this.props.projects.map((project, i) => {
