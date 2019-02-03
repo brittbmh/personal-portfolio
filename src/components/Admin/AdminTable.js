@@ -15,7 +15,6 @@ class AdminTable extends Component {
     render() {
         return (
             <div>
-                {JSON.stringify(this.props.projects)}
                 <table>
                     <thead>
                         <th>Name</th>

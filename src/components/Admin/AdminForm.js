@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Dropdown from './Dropdown.js';
+import DateInput from './DateInput.js';
 import { connect } from 'react-redux';
 
 class AdminForm extends Component {
     constructor() {
         super();
         this.state = {
-            tag_id: ''
+            tag_id: '',
+            stateDate: new Date()
         }
     }
 
@@ -14,23 +16,34 @@ class AdminForm extends Component {
         this.setState({
             tag_id: tag
         })
-        console.log(this.state);
+    }
+
+    handleDateChange = (date) => {
+        console.log('its happening');
+        
+        this.setState({
+            stateDate: date
+        })
+    }
+
+    sendProject = () => {
+        this.props.dispatch({type: 'ADD_PROJECT', payload: this.state})
     }
     
     render() {
         return (
             <div>
                 <br />
-                <form>
-                    <input placeholder="Project Name"/>
+                <form onSubmit={this.sendProject}>
+                    <input placeholder="Project Name" onChange={this.addName}/>
                     <input placeholder="Website URL (optional)"/>
                     <input placeholder="GitHub URL" />
                     <input placeholder="Description" />
-                    {/* <DateInput /> */}
+                    <DateInput setDate={this.handleDateChange}/>
                     <Dropdown setTag={this.handleSetTag}/>
+                    <button type="submit">Submit</button>
                 </form>
                 <br />
-                {JSON.stringify(this.state)}
             </div>
         )
     }

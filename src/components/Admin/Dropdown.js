@@ -6,7 +6,6 @@ class Dropdown extends Component {
     
 
     handleChange = event => {
-        console.log(event.target.value);
         this.props.setTag(event.target.value);
     };
 
