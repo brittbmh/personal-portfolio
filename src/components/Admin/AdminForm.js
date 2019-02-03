@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AdminTextFields from './AdminTextFields.js';
 import Dropdown from './Dropdown.js';
 import DateInput from './DateInput.js';
 import { connect } from 'react-redux';
@@ -7,14 +8,8 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -84,31 +79,8 @@ class AdminForm extends Component {
         return (
             <div>
                 <br />
-                <form className={classes.root}  id="projectForm" autoComplete="off" onSubmit={this.sendProject}>
-                    <TextField 
-                        id="project-name"
-                        label="Project Name"
-                        className={classes.textField}
-                        margin="normal"
-                        placeholder="Name" required onChange={this.addInput('name')} />
-                   
-                    <TextField id="project-website"
-                        label="Project Website"
-                        className={classes.textField}
-                        margin="normal"
-                        placeholder="Website URL (optional)" onChange={this.addInput('website')} />
-                    
-                    <TextField id="project-github"
-                        label="Github Repository"
-                        className={classes.textField}
-                        margin="normal"
-                        placeholder="GitHub URL" required onChange={this.addInput('github')} />
-                    
-                    <TextField 
-                        id="project-desc"
-                        label="Project Description"
-                        className={classes.textField}
-                        margin="normal" placeholder="Description" required onChange={this.addInput('desc')} />
+                <form className={classes.container} id="projectForm" autoComplete="off" onSubmit={this.sendProject}>
+                    <AdminTextFields addInput={this.addInput}/>
                     <DateInput setDate={this.handleDateChange} />
                     <Dropdown required setTag={this.handleSetTag} />
                     <Button type="submit">Submit</Button>
