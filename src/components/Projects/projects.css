@@ -11,6 +11,9 @@ projectSpan {
     float: right;
 }
 
-img {
+.projImg {
     float: left;
+    height: 150px;
+    border: 2px solid black;
+    padding: 2px;
 }

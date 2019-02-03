@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+//material-ui
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 
 class AdminTableItems extends Component {
-//function to iterate projects to display in table on admin page
+    //function to iterate projects to display in table on admin page
 
     // map to projects array to create table to display projects list on admin page
     deleteProject = () => {
@@ -11,10 +14,10 @@ class AdminTableItems extends Component {
 
     render() {
         return (
-                <tr>
-                    <td>{this.props.project.name}</td>
-                    <td><button onClick={this.deleteProject}>Delete</button></td>
-                </tr>
+            <TableRow>
+                <TableCell>{this.props.project.name}</TableCell>
+                <TableCell><button onClick={this.deleteProject}>Delete</button></TableCell>
+            </TableRow>
         )
     }
 }

@@ -6,9 +6,9 @@ class ProjectDetails extends Component {
     //function to conditionally render an image - if no image exists, it will display default of logo
     imageDisplay = () => {
         if (this.props.project.thumbnail === null) {
-            return <img src="/images/bc_pic.jpg" alt="logo" />;
+            return <img className="projImg" src="/images/bc_plain.png" alt="logo" />;
         } else {
-            return <img src={this.props.project.thumbnail} alt="screenshot" />;
+            return <img className="projImg" src={this.props.project.thumbnail} alt="screenshot" />;
         }
     }
 

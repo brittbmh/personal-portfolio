@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
     })
 });
 
+//delete selected project from database projects table
 router.delete('/:id', (req, res) => {
     const project = req.params.id;
     const queryText = `DELETE FROM projects WHERE id = $1;`;

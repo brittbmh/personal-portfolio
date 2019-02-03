@@ -18,6 +18,7 @@ class Admin extends Component {
                 <AdminForm />
                 <h4>Projects</h4>
                 <AdminTable />
+                <br />
             </div>
         )
     }
