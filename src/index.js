@@ -17,14 +17,27 @@ function* rootSaga() {
     yield takeEvery("GET_PROJECTS", fetchProjects);
     yield takeEvery("GET_TAGS", fetchTags);
     yield takeEvery("ADD_PROJECT", sendProject)
+    yield takeEvery("DELETE_PROJECT", deleteProject)
+}
+
+function* deleteProject(action) {
+    //function to send axios delete request to database to delete selected project
+    try {
+        yield axios.delete(`api/projects/${action.payload}`);
+        // next, trigger new fetchProjects to refresh project list
+        yield put({type: 'GET_PROJECTS'});
+    } catch(error) {
+        yield console.log('error in deleteProject', error);
+        alert('something went wrong');
+    }
 }
 
 function* sendProject(action) {
-    //function to send axios request to database to post new projects
+    //function to send axios post request to database to post new projects
     try {
         yield axios.post('api/projects', action.payload);
         // next, trigger new fetchProjects to refresh project list
-        yield put({type: 'GET_PROJECTS'})
+        yield put({type: 'GET_PROJECTS'});
     } catch(error) {
         yield console.log('error in sendProject', error);
         alert('something went wrong');

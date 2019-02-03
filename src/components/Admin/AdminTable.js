@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import AdminTableItems from './AdminTableItems';
 
 class AdminTable extends Component {
     // map to projects array to create table to display projects list on admin page
+
+
+
     tableDetails = () => {
         return (
             this.props.projects.map((project, i) => {
-                return (<tr key={i}>
-                    <td>{project.name}</td>
-                    <td><button>Delete</button></td>
-                </tr>)
+                return (<AdminTableItems key={i} project={project} />)
             })
         )
     }
-    
+
     render() {
         return (
             <div>

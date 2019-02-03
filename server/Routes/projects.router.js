@@ -17,6 +17,17 @@ router.get('/', (req, res) => {
     })
 });
 
+router.delete('/:id', (req, res) => {
+    const project = req.params.id;
+    const queryText = `DELETE FROM projects WHERE id = $1;`;
+    pool.query(queryText, [project]).then((response) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error in DELETE /projects', error);
+        res.sendStatus(500);
+    })
+})
+
 //post new projects to database projects table
 router.post('/', (req, res) => {
     const project = req.body;
