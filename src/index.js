@@ -19,8 +19,14 @@ function* rootSaga() {
     yield takeEvery("ADD_PROJECT", sendProject)
 }
 
-function* sendProject() {
-    
+function* sendProject(action) {
+    try {
+        yield axios.post('api/projects', action.payload);
+        yield put({type: 'GET_PROJECTS'})
+    } catch(error) {
+        yield console.log('error in sendProject', error);
+        alert('something went wrong');
+    }
 }
 
 function* fetchTags() {
