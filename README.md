@@ -1,6 +1,6 @@
 # React Redux with Sagas
 
-A one-page website portfolio to showcase my projects.
+A one-page website portfolio to showcase my projects. This project was created as a weekend assignment during my time at Prime Digital Academy. This is different from my portfolio website.
 
 ## Setup
 
